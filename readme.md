@@ -10,8 +10,8 @@ __2.Clone and cd then sh upload.sh__
 
 
 ```shell
-git clone https://github.com/miaowm5/KeUploader.git
-cd KeUploader
+git clone https://github.com/javenfeng/upload5.git
+cd upload5
 sh upload.sh
 ```
 

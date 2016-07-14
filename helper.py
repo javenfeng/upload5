@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-""" uploader helper for KindleEar
+""" uploader helper for kindleear5
 It will modify AppId and some other items for you automatically.
 Configure file 'custom.txt' format (encoding of the file must be ascii):
 application: YourAppId
@@ -14,8 +14,8 @@ __Version__ = '1.3.1'
 __Date__ = '2015-08-20'
 
 CUSTOM_FILE = 'custom.txt'
-KE_DIR = 'KindleEar'
-KE_MASTER_DIR = 'KindleEar-master'
+KE_DIR = 'kindleear5'
+KE_MASTER_DIR = 'kindleear5-master'
 PAT_APP = r"^application:\s*([\w\-]+)"
 PAT_EMAIL = r"^SRC_EMAIL\s*=\s*[\"\']([\w@\.\-]+)[\"\'](.*)"
 PAT_DOMAIN = r"^DOMAIN\s*=\s*[\"\']([\w:/\.\-]+)[\"\'](.*)"
@@ -99,13 +99,13 @@ def RemoveChineseBooks(ke_dir):
                 pass
 
 def Main():
-    #Searching for KindleEar folder
+    #Searching for kindleear5 folder
     ke_dir = os.path.join(os.path.dirname(__file__), KE_DIR)
     kem_dir = os.path.join(os.path.dirname(__file__), KE_MASTER_DIR)
     kemm_dir = os.path.join(kem_dir, KE_MASTER_DIR)
     dirs = filter(os.path.exists, (ke_dir, kemm_dir, kem_dir))
     if not dirs:
-        print("Cant found folder 'KindleEar'! Please download it from github firstly.")
+        print("Cant found folder 'kindleear5'! Please download it from github firstly.")
         return 1
     
     ke_dir = dirs[0]
@@ -119,7 +119,7 @@ def Main():
         with open(app_yaml, 'r') as fapp:
             slapp = fapp.read().split('\n')
     if not slapp:
-        print("Not exist 'app.yaml' or it's invalid, please download KindleEar again.")
+        print("Not exist 'app.yaml' or it's invalid, please download kindleear5 again.")
         return 1
         
     slcfg = [] #string buffer for config.py
@@ -127,7 +127,7 @@ def Main():
         with codecs.open(cfg_file, 'r', 'utf-8') as fcfg:
             slcfg = fcfg.read().split('\n')
     if not slcfg:
-        print("Not exist 'config.py' or it's invalid, please download KindleEar again.")
+        print("Not exist 'config.py' or it's invalid, please download kindleear5 again.")
         return 1
         
     slwork = [] #string buffer for module-worker.yaml
@@ -202,7 +202,7 @@ def Main():
             with open(app_yaml, 'w') as fapp:
                 fapp.write('\n'.join(slapp))
     else:
-        print('app.yaml seems invalid, please download KindleEar again.')
+        print('app.yaml seems invalid, please download kindleear5 again.')
         return 1
     
     #Check and modify module-work.yaml
@@ -214,7 +214,7 @@ def Main():
                 with open(work_yaml, 'w') as fwork:
                     fwork.write('\n'.join(slwork))
         else:
-            print('module-work.yaml seems invalid, please download KindleEar again.')
+            print('module-work.yaml seems invalid, please download kindleear5 again.')
             return 1
     
     #Check and modify config.py
@@ -249,7 +249,7 @@ def Main():
     return 0
     
 if __name__ == '__main__':
-    print('\nKindleEar uploader v%s (%s) by %s\n' % (__Version__, __Date__, __Author__))
+    print('\nkindleear5 uploader v%s (%s) by %s\n' % (__Version__, __Date__, __Author__))
     ret = Main()
     if ret:
         import sys
